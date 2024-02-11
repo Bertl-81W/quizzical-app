@@ -1,5 +1,7 @@
 import React from "react"
 import { decode } from "html-entities"
+import { Html5Entities } from 'html-entities';
+
 
 export default function Question(props) {
     function clickAnswer(answer, currentQuestion) {
