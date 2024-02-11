@@ -60,9 +60,7 @@ export default function Quiz(props) {
                 if(result.selectedAnswer === result.correctAnswer) {
                     correctCount++;
                     if (correctCount === 5) { 
-                        setShowConfetti(true);
-
-                          /*prevNum => prevNum + 1)  */
+                        setShowConfetti(true);                          
                   }    
                 }
             });
