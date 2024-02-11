@@ -2,15 +2,21 @@
   box-sizing: border-box;
 }
 
-body {
-  background-color: #8a2be2;
-  margin: 0;
+body { 
+  background-image: url('./assets/80sgrid-purple.jpg'); 
+  background-size: cover;
+  background-position: center;  
+  background-repeat: no-repeat;
+  margin: 0; 
+  top: 0;
+  left: 0;
   color: #ffffff;
   display: flex;
   justify-content: center;
   align-items: center;
   font-family: 'Karla', sans-serif;
 }
+
 
 button {
   cursor: pointer;
@@ -21,22 +27,6 @@ button:focus {
   outline: none;
 }
 
-/* BLOBS */
-
-.blob-yellow {
-  position: fixed;
-  right: 0;
-  top: 0;
-  z-index: -1;
-}
-
-.blob-blue {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  z-index: -1;
-}
-
 /* START PAGE */
 
 .start-page {
@@ -44,12 +34,17 @@ button:focus {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 100vh; 
 }
 
 .title {
   font-size: 2.5rem;
   margin: 0;
+}
+
+.info {
+  color: hsl(299, 94%, 51%);
+  font-size: 20px;
 }
 
 .subtitle {
@@ -68,7 +63,9 @@ button:focus {
 }
 
 /* QUIZ PAGE */
-
+.quiz-container {
+  background-size: cover;
+}
 .quiz-page {
   padding: 30px 75px;
 }
@@ -134,6 +131,7 @@ button:focus {
 }
 
 .results-text {
+  color:#2bee55;
   font-family: 'Inter', sans-serif;
   font-weight: 700;
   font-size: 14px;
