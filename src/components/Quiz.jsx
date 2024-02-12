@@ -3,6 +3,7 @@ import { nanoid } from "nanoid"
 import Question from "./Questions"
 import "../confetti.css"
 
+
 export default function Quiz(props) {
     const [quizData, setQuizData] = React.useState([])
     const [showWarning, setShowWarning] = React.useState(false)
