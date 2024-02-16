@@ -15,28 +15,53 @@ export default function Quiz(props) {
         const colors = ['#ff0000', '#ffffff', '#0000ff'];
     return colors[Math.floor(Math.random() * colors.length)];
     }
-        
+
     React.useEffect(() => {
         fetch('https://opentdb.com/api.php?amount=5&category=32&difficulty=easy&type=multiple')  
-            .then(res => res.json())
-            .then(data => {
-                let resultArray = []
-                data.results.map((result) => {
-                    return resultArray.push({
-                        id: nanoid(),
-                        question: result.question,
-                        correctAnswer: result.correct_answer,
-                        answers: result.incorrect_answers
-                            .concat(result.correct_answer)
-                            .sort(
-                                () => Math.random() - 0.5
-                            ),
-                        selectedAnswer: ""
-                    })
-                })
-                setQuizData(resultArray)
+            .then(res => {
+                if (!res.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return res.json();
             })
-    }, [])
+            .then(data => {
+                const resultArray = data.results.map((result) => ({
+                    id: nanoid(),
+                    question: result.question,
+                    correctAnswer: result.correct_answer,
+                    answers: [...result.incorrect_answers, result.correct_answer].sort(() => Math.random() - 0.5),
+                    selectedAnswer: ""
+                }));
+                setQuizData(resultArray);
+            })
+            .catch(error => {
+                console.error('Error fetching quiz data:', error);
+                // Handle error or show a message to the user
+            });
+    }, []);
+    
+        
+    //React.useEffect(() => {
+    //    fetch('https://opentdb.com/api.php?amount=5&category=32&difficulty=easy&type=multiple')  
+    //        .then(res => res.json())
+    //        .then(data => {
+    //            let resultArray = []
+    //            data.results.map((result) => {
+    //                return resultArray.push({
+    //                    id: nanoid(),
+    //                    question: result.question,
+    //                    correctAnswer: result.correct_answer,
+    //                    answers: result.incorrect_answers
+    //                        .concat(result.correct_answer)
+    //                        .sort(
+    //                            () => Math.random() - 0.5
+    //                        ),
+    //                    selectedAnswer: ""
+    //                })
+    //            })
+    //            setQuizData(resultArray)
+ //           })
+ //   }, []) 
     
     function updateAnswer(currentQuestion, answer) {
         setQuizData(

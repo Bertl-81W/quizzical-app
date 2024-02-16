@@ -3,6 +3,7 @@ import { decode } from "html-entities"
 
 
 
+
 export default function Question(props) {
     function clickAnswer(answer, currentQuestion) {
         props.updateAnswer(currentQuestion, answer)
