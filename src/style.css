@@ -150,3 +150,9 @@ button:focus {
 .dimmed {
   opacity: 0.5;
 }
+
+@media (max-width: 576px) {
+  .title {
+    text-align: center;
+  }
+}
